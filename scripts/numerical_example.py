@@ -66,7 +66,7 @@ def probBiasAnalysisOR(
         RR_ZY_i = np.random.uniform(RR_unif_params[0], RR_unif_params[1])
         B_i = (RR_ZY_i * p1_i + (1 - p1_i)) / (RR_ZY_i * p0_i + (1 - p0_i))
         # ブートストラップ再サンプリング
-        for i in range(N_boot):
+        for j in range(N_boot):
             boot_idx = np.random.choice(indices, size=len(X), replace=True)
             OR_val, _ = calcORfunc(X[boot_idx], Y[boot_idx])
             OR_vals.append(OR_val / B_i)
