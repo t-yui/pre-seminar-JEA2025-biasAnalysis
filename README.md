@@ -16,7 +16,7 @@ pre-seminar-JEA2025-biasAnalysis/
 
 - 必要なパッケージのインストール
 ```bash
-pip install numpy pandas matplotlib seaborn scipy japanize-matplotlib
+pip install numpy pandas matplotlib scipy japanize-matplotlib
 ```
 
 - 実行
