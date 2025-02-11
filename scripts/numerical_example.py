@@ -22,15 +22,15 @@ def calcOR(X, Y):
     return OR, table
 
 
-def calcB(p1, p0, RR_UY):
-    B = (RR_UY * p1 + (1 - p1)) / (RR_UY * p0 + (1 - p0))
+def calcB(p1, p0, RR_ZY):
+    B = (RR_ZY * p1 + (1 - p1)) / (RR_ZY * p0 + (1 - p0))
     return B
 
 
-def fixedBiasAnalysisOR(calcORfunc, X, Y, p1, p0, RR_UY, N_boot=100000):
+def fixedBiasAnalysisOR(calcORfunc, X, Y, p1, p0, RR_ZY, N_boot=100000):
     """Bias Analysis of OR with Fixed Bias Parameter"""
     OR, _ = calcORfunc(X, Y)
-    B = calcB(p1, p0, RR_UY)
+    B = calcB(p1, p0, RR_ZY)
     adjusted_OR = OR / B
 
     OR_vals = []
@@ -175,27 +175,27 @@ if __name__ == "__main__":
     ## setting 1
     p1 = 0.20
     p0 = 0.10
-    RR_UY = 1.5
-    adjusted_OR, OR_lower, OR_upper = fixedBiasAnalysisOR(calcOR, X, Y, p1, p0, RR_UY)
-    print(f"\nバイアスパラメータ: p1 = {p1}, p0 = {p0}, RR_UY = {RR_UY}")
+    RR_ZY = 1.5
+    adjusted_OR, OR_lower, OR_upper = fixedBiasAnalysisOR(calcOR, X, Y, p1, p0, RR_ZY)
+    print(f"\nバイアスパラメータ: p1 = {p1}, p0 = {p0}, RR_ZY = {RR_ZY}")
     print(f"補正後 OR = {adjusted_OR:.3f}")
     print(f"95% CI = [{OR_lower:.3f}, {OR_upper:.3f}]")
 
     ## setting 2
     p1 = 0.10
     p0 = 0.20
-    RR_UY = 1.5
-    adjusted_OR, OR_lower, OR_upper = fixedBiasAnalysisOR(calcOR, X, Y, p1, p0, RR_UY)
-    print(f"\nバイアスパラメータ: p1 = {p1}, p0 = {p0}, RR_UY = {RR_UY}")
+    RR_ZY = 1.5
+    adjusted_OR, OR_lower, OR_upper = fixedBiasAnalysisOR(calcOR, X, Y, p1, p0, RR_ZY)
+    print(f"\nバイアスパラメータ: p1 = {p1}, p0 = {p0}, RR_ZY = {RR_ZY}")
     print(f"補正後 OR = {adjusted_OR:.3f}")
     print(f"95% CI = [{OR_lower:.3f}, {OR_upper:.3f}]")
 
     ## setting 3
     p1 = 0.20
     p0 = 0.10
-    RR_UY = 5.0
-    adjusted_OR, OR_lower, OR_upper = fixedBiasAnalysisOR(calcOR, X, Y, p1, p0, RR_UY)
-    print(f"\nバイアスパラメータ: p1 = {p1}, p0 = {p0}, RR_UY = {RR_UY}")
+    RR_ZY = 5.0
+    adjusted_OR, OR_lower, OR_upper = fixedBiasAnalysisOR(calcOR, X, Y, p1, p0, RR_ZY)
+    print(f"\nバイアスパラメータ: p1 = {p1}, p0 = {p0}, RR_ZY = {RR_ZY}")
     print(f"補正後 OR = {adjusted_OR:.3f}")
     print(f"95% CI = [{OR_lower:.3f}, {OR_upper:.3f}]")
 
